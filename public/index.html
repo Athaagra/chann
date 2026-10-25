@@ -1,0 +1,105 @@
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.0/css/all.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/4.0.0/jquery.min.js" integrity="sha512-8LENNbXmzI/Gbj+OwXmqR6V4QaUAw0/porPzy1+dQoJqC0JPHedWoe0DDOTL2uHA5XXJyIsPtiMHH86pVlay6A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.8.4/socket.io.min.js" integrity="sha512-xRBIxEU1o+/TCVhv/EL1y/xAdUVdvVQJSXO0zafimQ/Qm6acv4wlfZxqpoXZLO6pa2dROhAEJAXXdI+FAFgnKA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<div class="app-dashboard shrink-medium">
+  <div class="row expanded app-dashboard-top-nav-bar">
+    <div class="columns medium-2">
+      <button data-toggle="app-dashboard-sidebar" class="menu-icon hide-for-medium"></button>
+      <a class="app-dashboard-logo">Foundation</a>
+    </div>
+    <div class="columns show-for-medium">
+      <div class="app-dashboard-search-bar-container">
+        <input class="app-dashboard-search" type="search" placeholder="Search">
+        <i class="app-dashboard-search-icon fa fa-search"></i>
+      </div>
+    </div>
+    <div class="columns shrink app-dashboard-top-bar-actions">
+      <button href="#" class="button hollow">Logout</button>
+      <a href="#" height="30" width="30" alt=""><i class="fa fa-info-circle"></i></a>
+    </div>
+  </div>
+
+
+<div id="meetingContainer">Testing One</div>
+  <div class="app-dashboard-body off-canvas-wrapper">
+    <div id="app-dashboard-sidebar" class="app-dashboard-sidebar position-left off-canvas off-canvas-absolute reveal-for-medium" data-off-canvas>
+      <div class="app-dashboard-sidebar-title-area">
+	  <div class="nnamespace" ></div>
+        <div class="app-dashboard-close-sidebar namespace">
+          <!--<h3 class="app-dashboard-sidebar-block-title namespace" ns="/wiki"></h3>-->
+          <!-- Close button -->
+          <!--<button id="close-sidebar" data-app-dashboard-toggle-shrink class="app-dashboard-sidebar-close-button show-for-medium" aria-label="Close menu" type="button">
+            <span aria-hidden="true"><a href="#"><i class="large fa fa-angle-double-left"></i></a></span>
+          </button>
+		   <h3 class="app-dashboard-sidebar-block-title namespace" ns="/mozilla">Mozilla</h3>-->
+          <!-- Close button -->
+        </div>
+        <div class="app-dashboard-open-sidebar">
+          <button id="open-sidebar" data-app-dashboard-toggle-shrink class="app-dashboard-open-sidebar-button show-for-medium" aria-label="open menu" type="button">
+            <span aria-hidden="true"><a href="#"><i class="large fa fa-angle-double-right"></i></a></span>
+          </button>
+        </div>
+      </div><!-- ffqqggfsfs-->
+      <div class="app-dashboard-sidebar-inner">
+        <ul class="menu vertical room-list">
+        <!--  <li class="room-list" ><a href="#" class="is-active">
+            <i class="large fa fa-institution"></i><span class="app-dashboard-sidebar-text">Buildings</span>
+          </a></li> -->
+          <li class="room"><a>
+            <i class="large fa fa-hourglass"></i><span class="app-dashboard-sidebar-text">Time</span>
+          </a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="app-dashboard-body-content off-canvas-content" data-off-canvas-content>
+	<div class="container text-center">
+	      <span class="text-center curr-room-text" >Current Room</span>
+	  <span class="curr-room-num-users">Users<span class="glyphicon glyphicon-user"></span></span>
+    
+	<form class="row" id="message-form">
+		<div class="col-6">
+			<input id="user-message" type="text" placeholder="Enter your message" />
+			<div class="col-2">
+			<input class="btn btn-primary" type="submit" value="Send!" />
+		</div>
+		
+		</div>
+		 <div class="" id="miceMuteUnmute">
+			<i class="fa fa-microphone-slash" aria-hidden="true"></i>
+			<audio id="audioCapture"></audio>
+		</div>
+		<!--<div id="meetingContainer" class="w-75" style="display:inline-table" >-->
+		<div class="" id="but">
+			<i class="fa fa-video-camera" aria-hidden="true" id="but"></i>
+			<video autoplay muted id="localVideoPlayer"></video>
+		</div>
+		<!--</div>-->
+	</form>
+		<ul id="messages">
+	
+		</ul>
+	</div>
+
+    </div>
+  </div>
+</div>
+<script>
+$(function(){
+	const urlParams = new URLSearchParams(window.location.search);
+	var meeting_id = urlParams.get('meetingID');
+	var user_id = window.prompt('Enter your userid');
+	if (!user_id || !meeting_id) {
+		alert('User Id or meeting id missing');
+		window.location.href = '/action.html';
+		return;
+	}
+	$("#meetingContainer").show();
+	MyApp._init(user_id,meeting_id);
+})
+
+</script>
+
+<script src=""></script>
+<script src="/js/app.js"></script>
