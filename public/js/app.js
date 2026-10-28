@@ -60,7 +60,7 @@ var AppProcess = (function(){
 		async function videoProcess(newVideoState){
 			try {
 				var vstream = null;
-				if(newVideoState == video_states.camera){
+				if(newVideoState == video_states.Camera){
 					vstream = await navigator.mediaDevices.getUserMedia({
 						video:{
 							width:1920,
@@ -81,6 +81,7 @@ var AppProcess = (function(){
 					videoCamTrack = vstream.getVideoTracks()[0];
 					if(videoCamTrack){
 						local_div.srcObject = new MediaStream([videoCamTrack]);
+						alert("video cam found");
 					}
 				}
 			}catch(e){

@@ -66,16 +66,34 @@
 		</div>
 		
 		</div>
-		 <div class="" id="miceMuteUnmute">
+		 <!--<div class="" id="miceMuteUnmute">
 			<i class="fa fa-microphone-slash" aria-hidden="true"></i>
 			<audio id="audioCapture"></audio>
-		</div>
+		</div>-->
 		<!--<div id="meetingContainer" class="w-75" style="display:inline-table" >-->
+		<div class="bottom-middle d-flex justify-content-center align-items-center"
+				style="height:10vh;">
+				<div class="mic-toggle-wrap action-icon-style display-center mr-2 
+				cursor-pointer" id="miceMuteUnmute">
+					<span class="material-icons" style="width:100%;">mic_off</span>
+				</div>
+				<div class="end-call-wrap action-icon-style display-center mr-2 cursor-pointer">
+					<span class="material-icons text-danger">call</span>
+				</div>
+				<div id="videoCamOnOff" class="video toggle-wrap action-icon-style display-center cursor-pointer">
+					<span class="material-icons" style="width:100%;">videocam_off</span>
+				</div>
+				<div id="handRaiseAction" class="handRaiseAction action-icon-style display-center cursor-pointer">
+					<img src="/public/Assets/images/handRaiseBlack.png" style="height:30px;width:30px;"/>
+					
+				</div>
+		</div>
+		<div>
 		<div class="" id="but">
 			<i class="fa fa-video-camera" aria-hidden="true" id="but"></i>
 			<video autoplay muted id="localVideoPlayer"></video>
 		</div>
-		<!--</div>-->
+		</div>
 	</form>
 		<ul id="messages">
 	
