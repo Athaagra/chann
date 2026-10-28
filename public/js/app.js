@@ -146,7 +146,7 @@ var AppProcess = (function(){
 			peers_connection[connid] = connection;
 			return connection;
 		}
-		function setOffer(connid){
+		async function setOffer(connid){
 			var connection = peers_connection[connid];
 			var offer = await connection.createOffer();
 			await connection.setLocalDescription(offer);
