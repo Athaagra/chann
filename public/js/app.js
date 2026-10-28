@@ -157,11 +157,11 @@ var AppProcess = (function(){
 			);
 			
 		}
-		function SDPProcess(message,from_connid){
+		async function SDPProcess(message,from_connid){
 			message = JSON.parse(message);
 			if(message.answer){
 				await peers_connection[from_connid].setRemoteDescription(new 
-				RTCSessionDescription(message.answer))
+				RTCSessionDescription(message.answer));
 			}else if(message.offer){
 				if(!peers_connection[from_connid]){
 					await setConnection(from_connid);
@@ -249,7 +249,7 @@ var MyApp=(function (){
 	}
 	
 	function addUser(other_user_id, connId){
-		new newDivId = $("#otherTemplate").clone()
+		new newDivId = $("#otherTemplate").clone();
 		newDivId = newDivId.attr("id",connId).addClass("other");
 		newDivId.find("h2").text(other_user_id);
 		newDivId.find("video").attr("id","v_"+connId);
