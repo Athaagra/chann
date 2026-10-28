@@ -14,6 +14,7 @@ var AppProcess = (function(){
 			ScreenShare:2
 		}
 		var video_st = video_states.None;
+		var videoCamTrack;
 		async function _init(SDP_function,my_connid){
 			serverProcess=SDP_function;
 			my_connection_id= my_connid;
@@ -47,14 +48,47 @@ var AppProcess = (function(){
 				}else{
 					await videoProcess(video_states.Camera)
 				}
-			})
+			});
 			$("#ScreenShareOnof").on("click", async function(){
 				if(video_st == video_states.ScreenShare){
 					await videoProcess(video_states.None)
 				}else{
 					await videoProcess(video_states.ScreenShare)
 				}
-			})
+			});
+		}
+		async function videoProcess(newVideoState){
+			try {
+				var vstream = null;
+				if(newVideoState == video_states.camera){
+					vstream = await navigator.mediaDevices.getUserMedia({
+						video:{
+							width:1920,
+							height:1080
+						},
+						audio:false
+					})
+				}else if(newVideoState == video_states.ScreenShare){
+					vstream = await navigator.mediaDevices.getDisplayMedia({
+						video:{
+							width:1920,
+							height:1080
+						},
+						audio:false
+					})
+				}
+				if (vstream && vstream.getVideoTracks().length > 0 ){
+					videoCamTrack = vstream.getVideoTracks()[0];
+					if(videoCamTrack){
+						local_div.srcObject = new MediaStream([videoCamTrack]);
+					}
+				}
+			}catch(e){
+				console.log(e);
+				return
+			}
+			video_st = newVideoState;
+			
 		}
 		var iceConfiguration = {
 			iceServer:[
