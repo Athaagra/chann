@@ -8,6 +8,7 @@ var AppProcess = (function(){
 		var audio;
 		var isAudioMute = true;
 		var rtp_aud_senders =[];
+		var rtp_vid_senders =[];
 		video_states = {
 			None:0,
 			Camera:1,
@@ -32,11 +33,11 @@ var AppProcess = (function(){
 			}
 			if(isAudioMute){
 				audio.enabled = true;
-				$(this).html("<span class='material-icons'>mic</span>");
+				$(this).html("<span class='material-icons' style='width:100%'>mic</span>");
 				updateMediaSenders(audio, rtp_aud_senders);
 			}else{
 				audio.enabled = false;
-				$(this).html("<span class='material-icons'>mic-off</span>");
+				$(this).html("<span class='material-icons' style='width:100%'>mic-off</span>");
 				updateMediaSenders(rtp_aud_senders);
 			}
 			isAudioMute = !isAudioMute;
@@ -57,7 +58,69 @@ var AppProcess = (function(){
 				}
 			});
 		}
+		async function loadAudio(){
+			try {
+				var astream = await navigator.mediaDevices.getUserMedia({
+					video: false,
+					audio: true
+				});
+				audio = astream.getAudioTracks()[0];
+				audio.enabled = false;
+			}catch(e){
+				console.log(e);
+			}
+		}
+		function connection_status(connection){
+			if(connection && (connection.connectionState == "new" || connection.connectionState == "connecting" || connection.connectionState == "connected")
+				){
+					return true;
+				} else {
+					return false;
+				}
+		}
+		async function updateMediaSenders(track,rtp_senders){
+			for(var con_id in peers_connection_ids){
+				if(connection_status(peers_connection[con_id]))
+				{ if(rtp_senders[con_id] && rtp_senders[con_id].track){
+					rtp_senders[con_id].replaceTrack(track)
+				}else{
+					rtp_senders[con_id]= peers_connection[con_id].addTrack(track);
+				}
+					
+				}	
+			}
+		}
+		function removeMediaSenders(rtp_senders){
+			for (var con_id in peers_connection_ids){
+				if(rtp_senders[con_id] && connection_status(peers_connection[con_id])){
+					peers_connection[con_id].removeTrack(rtpSenders[con_id]);
+					rtp_senders[con_id] = null;
+				}
+			}
+		}
+		
+		function removeVideoStream(rtp_vid_senders){
+			if(videoCamTrack){
+				videoCamTrack.stop();
+				videoCamTrack = null ;
+				local_div.srcObject = null;
+				removeMediaSenders(rtp_vid_senders);
+			}
+		}
 		async function videoProcess(newVideoState){
+			if(newVideoState == video_states.None){
+				$("#videoCamOnOff").html(
+				"<span class='materials-icons' style='width:100%'>videocam_off</span>"
+				);
+				video_st = newVideoState;
+				removeVideoStream(rtp_vid_senders);
+				return;
+			}
+			if(newVideoState == video_states.Camera){
+				$("#videoCamOnOff").html(
+				"<span class='materials-icons' style='width:100%'>videocam_on</span>"
+				);
+			}
 			try {
 				var vstream = null;
 				if(newVideoState == video_states.Camera){
@@ -81,6 +144,7 @@ var AppProcess = (function(){
 					videoCamTrack = vstream.getVideoTracks()[0];
 					if(videoCamTrack){
 						local_div.srcObject = new MediaStream([videoCamTrack]);
+						updateMediaSenders(videoCamTrack, rtp_vid_senders);
 						alert("video cam found");
 					}
 				}
@@ -102,8 +166,8 @@ var AppProcess = (function(){
 			]
 		}
 	
-		async function setNewConnection(connid){
-			var connection = new RTCpeerconnection(iceConfiguration);
+		async function setConnection(connid){
+			var connection = new RTCPeerConnection(iceConfiguration);
 			
 			connection.onnegotiatonneeded = async function(event){
 				await setOffer(connid);
@@ -145,6 +209,14 @@ var AppProcess = (function(){
 			};
 			peers_connection_ids[connid] = connid;
 			peers_connection[connid] = connection;
+			if (
+				video_st == video_states.Camera ||
+				video_st == video_states.ScreenShare 
+				){
+					if (videoCamTrack){
+						updateMediaSenders(videoCamTrack,rtp_vid_senders);
+					}
+				}
 			return connection;
 		}
 		async function setOffer(connid){
@@ -249,13 +321,13 @@ var MyApp=(function (){
 	}
 	
 	function addUser(other_user_id, connId){
-		new newDivId = $("#otherTemplate").clone();
+		var newDivId = $("#otherTemplate").clone();
 		newDivId = newDivId.attr("id",connId).addClass("other");
 		newDivId.find("h2").text(other_user_id);
 		newDivId.find("video").attr("id","v_"+connId);
 		newDivId.find("audio").attr("id","a_"+connId);
 		newDivId.show();
-		$(#divUsers).append(newDivId);
+		$("#divUsers").append(newDivId);
 	}
 	
 	
