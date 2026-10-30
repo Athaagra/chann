@@ -321,6 +321,7 @@ var MyApp=(function (){
 		user_id = uid;
 		meeting_id = mid;
 		event_process_for_signaling_server();
+		eventHandeling();
 	}
 	
 	function event_process_for_signaling_server(){
