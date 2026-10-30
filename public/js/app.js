@@ -50,7 +50,7 @@ var AppProcess = (function(){
 					await videoProcess(video_states.Camera)
 				}
 			});
-			$("#ScreenShareOnof").on("click", async function(){
+			$("#ScreenShareOnOf").on("click", async function(){
 				if(video_st == video_states.ScreenShare){
 					await videoProcess(video_states.None)
 				}else{
