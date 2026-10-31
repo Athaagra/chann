@@ -36,33 +36,32 @@ video{
   </div>
 
 
-<div id="meetingContainer" style="display:none; flex-basis:75%; ">
-					
-				<div class="call-wrap" style="background-color:black;">
-					<div class="video-wrap" id="divUsers"
-					style="display-flex; flex-wrap:wrap">
-					<div id="me" class="userbox display-center flex-column">
-						<h2 class="display-center" style="font-size:14px;"></h2>
-							<div class="display-center" style="position:relative;">
-								<img src="/public/Assets/images/handRaise.png" 
-								style="position:absolute; height: 30px; top:8%; left:3%; display:none;"/>
-								<video autoplay muted id="localVideoPlayer"></video>
-							</div>
-					</div>
-					<!---Video Call -->
-						<div id="otherTemplate"class="userbox display-center flex-column"
-						style="display:none;">
-							<h2 class="display-center" style="font-size:14px;"></h2>
-							<div class="display-center" style="position:relative;">
-								<img src="/public/Assets/images/handRaise.png" 
-								style="position:absolute; height: 30px; top:8%; left:3%; display:none;" id="hand_"/>
-								<video autoplay muted ></video>
-								<audio autoplay controls style="display:none"></audio>
-							</div>
-						</div>
-					</div>
-					</div>
-</div>
+ <div id="meetingContainer"  style="display: none;flex-basis: 75%;">
+                <div class="call-wrap" style="background-color: black;">
+                <div class="video-wrap" id="divUsers" style="display:flex; flex-wrap:wrap">
+                    <div id="me" class="userbox display-center flex-column">
+                        <h2 class="display-center" style="font-size: 14px;"></h2>
+                        <!-- ......................HandRaise ...............-->
+                        <div class="display-center" style="position: relative;">
+                            <img class="handRaise" src="/public/Assets/images/handRaise.png" style="position: absolute;height: 30px;top:8%; left: 3%;display: none;"/>
+
+                         <!-- .....................HandRaise .................-->   
+                            <video autoplay muted id="locaVideoPlayer"></video>
+                        </div>
+                    </div>
+                    <div id="otherTemplate" class="userbox display-center flex-column" style="display:none">
+                        <h2 class="display-center" style="font-size: 14px;"></h2>
+                        <!-- .....................HandRaise .................-->   
+                        <div class="display-center" style="position: relative;">
+                            <img src="/public/Assets/images/handRaise.png" style="position: absolute;height: 30px;top:8%; left: 3%;display: none;"/>
+                            <!-- .....................HandRaise .................-->   
+                            <video autoplay muted></video>
+                            <audio autoplay controls style="display:none"></audio>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </di
 	<div class="g-right-details-wrap bg-light text-secondary h-100"
 					style="flex-basis:25%;z-index:1;">
 					<div class="meeting-heading-wrap d-flex justify-content-between
