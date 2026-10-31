@@ -20,19 +20,10 @@ video{
 <div class="app-dashboard shrink-medium">
   <div class="row expanded app-dashboard-top-nav-bar">
     <div class="columns medium-2">
-      <button data-toggle="app-dashboard-sidebar" class="menu-icon hide-for-medium"></button>
-      <a class="app-dashboard-logo">Foundation</a>
+      <a class="app-dashboard-logo">li</a>
     </div>
-    <div class="columns show-for-medium">
-      <div class="app-dashboard-search-bar-container">
-        <input class="app-dashboard-search" type="search" placeholder="Search">
-        <i class="app-dashboard-search-icon fa fa-search"></i>
-      </div>
-    </div>
-    <div class="columns shrink app-dashboard-top-bar-actions">
-      <button href="#" class="button hollow">Logout</button>
-      <a href="#" height="30" width="30" alt=""><i class="fa fa-info-circle"></i></a>
-    </div>
+
+
   </div>
 
 
@@ -61,17 +52,90 @@ video{
                     </div>
                 </div>
                 </div>
-            </di
-	<div class="g-right-details-wrap bg-light text-secondary h-100"
-					style="flex-basis:25%;z-index:1;">
-					<div class="meeting-heading-wrap d-flex justify-content-between
-					align-items-center pr-3 pl-3" style="height:10vh;">
-						<div class="meeting-heading font-weight-bold">
-						Meeting Details</div>
-						<div class="meeting-heading-cross display-center cursor-pointer">
-							<span class="material-icons">clear</span>
+            </div>
+	<div>
+			<div class="app-dashboard-body off-canvas-wrapper">
+
+    <div class="app-dashboard-body-content off-canvas-content" data-off-canvas-content>
+	<div class="container text-center" id="otherTemplate">
+	      <span class="text-center curr-room-text" >Current Room</span>
+	  <span class="curr-room-num-users">Users<span class="glyphicon glyphicon-user"></span></span>
+    
+	<!--<form class="row" id="message-form">
+		<div class="col-6">
+			<input id="msgbox" type="text" placeholder="Enter your message" />
+			<div class="col-2">
+			<input class="btn btn-primary" type="submit" value="Send!" id="btnsend" />
+		</div>
+		
+		</div>
+			</form>
+		<ul id="messages">
+	
+		</ul>-->
+		 <!--<div class="" id="miceMuteUnmute">
+			<i class="fa fa-microphone-slash" aria-hidden="true"></i>
+			<audio id="audioCapture"></audio>
+		</div>-->
+		<!--<div id="meetingContainer" class="w-75" style="display:inline-table" >-->
+		<div class="bottom-middle d-flex justify-content-center align-items-center"
+				style="height:10vh;display:inline-flex;">
+				<div class="mic-toggle-wrap action-icon-style display-center mr-2 
+				cursor-pointer" id="miceMuteUnmute">
+					<span class="material-icons" style="width:100%;">mic_off</span>
+				</div>
+				<div class="end-call-wrap action-icon-style display-center mr-2 cursor-pointer">
+					<span class="material-icons text-danger">call</span>
+				</div>
+				<div id="videoCamOnOff" class="video toggle-wrap action-icon-style display-center cursor-pointer">
+					<span class="material-icons" style="width:100%;">videocam_off</span>
+				</div>
+				<div id="handRaiseAction" class="handRaiseAction action-icon-style display-center cursor-pointer">
+					<img src="/public/Assets/images/handRaiseBlack.png" style="height:30px;width:30px;"/>
+					
+				</div>
+		</div>
+			<div class="bottom-right d-flex just-content-center align-items-center mr-3" style="height:10vh;display:inline-flex;">
+					<div class="present-now-wrap d-flex just-content-center flex-column align-items-center
+					 mr-5 cursor-pointer" id="ScreenShareOnOf">
+						<span class="material-icons">present_to_all</span>
+					 </div>
+					 <div>Present Now</div>
+					<div class="option-wrap cursor-pointer display-center" style="height:10vh; position:relative;">
+						<div class="option-icon">
+							<span class="material-icons">more_vert</span>
 						</div>
 					</div>
+			</div>
+		<!--<div style="float:right;">
+		<div id="me" class="userbox display-center flex-column">
+						<h2 class="display-center" style="font-size:14px;"></h2>
+							<div class="display-center" style="position:relative;">
+								<img src="/public/Assets/images/handRaise.png" 
+								style="position:absolute; height: 30px; top:8%; left:3%; display:none;"/>
+								<video autoplay muted id="localVideoPlayer"></video>
+							</div>
+					</div>-->	
+		<!--<div class="top-remote-video" id="but">
+			<i class="fa fa-video-camera" aria-hidden="true" id="but"></i>
+			<video autoplay muted id="localVideoPlayer"></video>
+		</div>-->
+		<!--</div>-->
+		<!--<div id="otherTemplate"class="userbox display-center flex-column"
+						style="display:none;">
+							<h2 class="display-center" style="font-size:14px;"></h2>
+							<div class="display-center" style="position:relative;">
+								<img src="/public/Assets/images/handRaise.png" 
+								style="position:absolute; height: 30px; top:8%; left:3%; display:none;" id="hand_"/>
+								<video autoplay muted ></video>
+								<audio autoplay controls style="display:none"></audio>
+							</div>
+						</div>-->
+
+	</div>
+
+    </div>
+  </div>
 					<div class="people-chat-wrap d-flex justify-content-between
 					align-items-center ml-3 mr-3 pr-3 pl-3" style="height:10vh;font-size:14px;">
 						<div class="people-heading display-center cursor-pointer">
@@ -144,110 +208,7 @@ video{
 			</div>
 
 
-<div id="">Testing One</div>
-  <div class="app-dashboard-body off-canvas-wrapper">
-    <div id="app-dashboard-sidebar" class="app-dashboard-sidebar position-left off-canvas off-canvas-absolute reveal-for-medium" data-off-canvas>
-      <div class="app-dashboard-sidebar-title-area">
-	  <div class="nnamespace" ></div>
-        <div class="app-dashboard-close-sidebar namespace">
-
-        </div>
-        <div class="app-dashboard-open-sidebar">
-          <button id="open-sidebar" data-app-dashboard-toggle-shrink class="app-dashboard-open-sidebar-button show-for-medium" aria-label="open menu" type="button">
-            <span aria-hidden="true"><a href="#"><i class="large fa fa-angle-double-right"></i></a></span>
-          </button>
-        </div>
-      </div><!-- ffqqggfsfs-->
-      <div class="app-dashboard-sidebar-inner">
-        <ul class="menu vertical room-list">
-   
-          <li class="room"><a>
-            <i class="large fa fa-hourglass"></i><span class="app-dashboard-sidebar-text">Time</span>
-          </a></li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="app-dashboard-body-content off-canvas-content" data-off-canvas-content>
-	<div class="container text-center" id="otherTemplate">
-	      <span class="text-center curr-room-text" >Current Room</span>
-	  <span class="curr-room-num-users">Users<span class="glyphicon glyphicon-user"></span></span>
-    
-	<!--<form class="row" id="message-form">
-		<div class="col-6">
-			<input id="msgbox" type="text" placeholder="Enter your message" />
-			<div class="col-2">
-			<input class="btn btn-primary" type="submit" value="Send!" id="btnsend" />
-		</div>
-		
-		</div>
-			</form>
-		<ul id="messages">
-	
-		</ul>-->
-		 <!--<div class="" id="miceMuteUnmute">
-			<i class="fa fa-microphone-slash" aria-hidden="true"></i>
-			<audio id="audioCapture"></audio>
-		</div>-->
-		<!--<div id="meetingContainer" class="w-75" style="display:inline-table" >-->
-		<div class="bottom-middle d-flex justify-content-center align-items-center"
-				style="height:10vh;">
-				<div class="mic-toggle-wrap action-icon-style display-center mr-2 
-				cursor-pointer" id="miceMuteUnmute">
-					<span class="material-icons" style="width:100%;">mic_off</span>
-				</div>
-				<div class="end-call-wrap action-icon-style display-center mr-2 cursor-pointer">
-					<span class="material-icons text-danger">call</span>
-				</div>
-				<div id="videoCamOnOff" class="video toggle-wrap action-icon-style display-center cursor-pointer">
-					<span class="material-icons" style="width:100%;">videocam_off</span>
-				</div>
-				<div id="handRaiseAction" class="handRaiseAction action-icon-style display-center cursor-pointer">
-					<img src="/public/Assets/images/handRaiseBlack.png" style="height:30px;width:30px;"/>
-					
-				</div>
-		</div>
-			<div class="bottom-right d-flex just-content-center align-items-center mr-3" style="height:10vh;">
-					<div class="present-now-wrap d-flex just-content-center flex-column align-items-center
-					 mr-5 cursor-pointer" id="ScreenShareOnOf">
-						<span class="material-icons">present_to_all</span>
-					 </div>
-					 <div>Present Now</div>
-					<div class="option-wrap cursor-pointer display-center" style="height:10vh; position:relative;">
-						<div class="option-icon">
-							<span class="material-icons">more_vert</span>
-						</div>
-					</div>
-			</div>
-		<!--<div style="float:right;">
-		<div id="me" class="userbox display-center flex-column">
-						<h2 class="display-center" style="font-size:14px;"></h2>
-							<div class="display-center" style="position:relative;">
-								<img src="/public/Assets/images/handRaise.png" 
-								style="position:absolute; height: 30px; top:8%; left:3%; display:none;"/>
-								<video autoplay muted id="localVideoPlayer"></video>
-							</div>
-					</div>-->	
-		<!--<div class="top-remote-video" id="but">
-			<i class="fa fa-video-camera" aria-hidden="true" id="but"></i>
-			<video autoplay muted id="localVideoPlayer"></video>
-		</div>-->
-		<!--</div>-->
-		<!--<div id="otherTemplate"class="userbox display-center flex-column"
-						style="display:none;">
-							<h2 class="display-center" style="font-size:14px;"></h2>
-							<div class="display-center" style="position:relative;">
-								<img src="/public/Assets/images/handRaise.png" 
-								style="position:absolute; height: 30px; top:8%; left:3%; display:none;" id="hand_"/>
-								<video autoplay muted ></video>
-								<audio autoplay controls style="display:none"></audio>
-							</div>
-						</div>-->
-
-	</div>
-
-    </div>
-  </div>
+  
 </div>
 <script>
 $(function(){
